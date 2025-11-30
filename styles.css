@@ -1,82 +1,102 @@
 /* =========================
    Paleta Type O Negative
    ========================= */
+/* Zmienna kolorów — ułatwia spójność stylu i szybkie zmiany kolorystyki */
 :root {
-  --toxic-green: #00A86B;
-  --deep-forest: #013220;
-  --pitch-black: #0A0A0A;
-  --gunmetal: #2B2B2B;
-  --blood-rust: #5A1A1A;
-  --ash: #707070;
-  --text: #E7ECEA;
-  --muted: #B7C2BD;
+  --toxic-green: #00A86B;   /* charakterystyczna zieleń zespołu */
+  --deep-forest: #013220;   /* ciemna "leśna" zieleń — tło */
+  --pitch-black: #0A0A0A;   /* głęboka czerń do tła */
+  --gunmetal: #2B2B2B;      /* stalowy szary, neutralne elementy */
+  --blood-rust: #5A1A1A;    /* zardzewiała czerwień — akcent */
+  --ash: #707070;           /* popielaty — do tekstów pomocniczych */
+  --text: #E7ECEA;          /* jasny tekst */
+  --muted: #B7C2BD;         /* przygaszony kolor tekstu/ikon */
 }
 
-/* Smooth scroll (płynne przewijanie) */
+/* Smooth scroll — płynne przewijanie do anchorów (#osoby itd.) */
 html {
   scroll-behavior: smooth;
 }
 
+/* Reset pudełkowy — zapobiega błędnemu liczeniu szerokości */
 * { box-sizing: border-box; }
+
+/* Reset marginesów i paddingów w dokumencie */
 html, body { margin: 0; padding: 0; }
+
+/* Obrazek zawsze dopasowany do kontenera, blokuje przerwy pod obrazem */
 img { max-width: 100%; display: block; }
 
-/* Tło + typografia */
+/* =========================
+   Tło + typografia strony
+   ========================= */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-  background: linear-gradient(180deg, var(--pitch-black), var(--deep-forest));
-  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif; /* podstawowa czcionka */
+  line-height: 1.6;                          /* wysokość linii dla czytelności */
+  background: linear-gradient(180deg, var(--pitch-black), var(--deep-forest)); /* gradient tła */
+  color: var(--text);                        /* domyślny kolor tekstu */
 }
 
+/* Ustawia szerokość strony i centrowanie treści */
 .container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 980px;   /* limit szerokości */
+  margin: 0 auto;     /* centrowanie */
+  padding: 0 16px;    /* odstęp od krawędzi */
 }
 
-/* Nagłówek */
+/* =========================
+   Nagłówek strony
+   ========================= */
 .site-header {
-  background: linear-gradient(180deg, #0f1916, var(--deep-forest));
+  background: linear-gradient(180deg, #0f1916, var(--deep-forest)); /* tło z gradientem */
   border-bottom: 1px solid #0f2a20;
-  padding: 32px 0;
-  text-align: center;
+  padding: 32px 0;      /* pionowe odstępy */
+  text-align: center;   /* wyśrodkowanie tekstu */
 }
-.site-header h1 { margin: 0 0 8px 0; font-size: 28px; }
-.site-header p { margin: 0; color: var(--muted); }
 
-/* Nawigacja */
+.site-header h1 { margin: 0 0 8px 0; font-size: 28px; } /* styl tytułu */
+.site-header p { margin: 0; color: var(--muted); }      /* opis pod tytułem */
+
+/* =========================
+   Nawigacja (sticky menu)
+   ========================= */
 .site-nav {
-  position: sticky;
+  position: sticky;  /* przykleja menu do góry podczas przewijania */
   top: 0;
   background: #101412;
   border-bottom: 1px solid #0f2a20;
-  z-index: 10;
+  z-index: 10;       /* aby menu było ponad treścią */
 }
+
 .site-nav ul {
   margin: 0;
   padding: 8px 0;
-  list-style: none;
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.site-nav a {
-  color: var(--toxic-green);
-  text-decoration: none;
-  padding: 6px 8px;
-  border-radius: 4px;
-}
-.site-nav a:hover {
-  background: rgba(0, 168, 107, 0.12);
+  list-style: none;  /* usuwa punktor listy */
+  display: flex;     /* układ w poziomie */
+  gap: 16px;         /* odstęp między linkami */
+  flex-wrap: wrap;   /* łamie wiersze na mniejszych ekranach */
 }
 
-/* Sekcje i karty */
+.site-nav a {
+  color: var(--toxic-green);      /* główny kolor linków */
+  text-decoration: none;          /* usuwa podkreślenie */
+  padding: 6px 8px;               /* klikowalny obszar */
+  border-radius: 4px;             /* lekko zaokrąglone */
+}
+
+.site-nav a:hover {
+  background: rgba(0, 168, 107, 0.12); /* subtelne podświetlenie */
+}
+
+/* =========================
+   Sekcje i karty
+   ========================= */
 h2 {
   font-size: 22px;
   margin: 24px 0 12px;
-  scroll-margin-top: 72px; /* offset dla sticky menu */
+  scroll-margin-top: 72px; /* przesunięcie dla anchorów pod sticky menu */
 }
+
 .lead { color: var(--muted); margin-bottom: 12px; }
 
 .card {
@@ -91,14 +111,18 @@ h2 {
 .hero .img-placeholder { margin-bottom: 8px; }
 .muted { color: var(--muted); }
 
-/* Siatka */
+/* =========================
+   Siatka (grid layout)
+   ========================= */
 .grid {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* auto responsywna siatka */
 }
 
-/* Placeholdery obrazów */
+/* =========================
+   Placeholder obrazów
+   ========================= */
 .img-placeholder {
   background: repeating-linear-gradient(
     45deg,
@@ -106,25 +130,25 @@ h2 {
     #0f1a16 10px,
     #13241d 10px,
     #13241d 20px
-  );
-  border: 2px dashed var(--toxic-green);
+  ); /* Teksturowane tło imitujące "czekające" zdjęcie */
+  border: 2px dashed var(--toxic-green); /* ramka */
   border-radius: 8px;
   display: grid;
-  place-items: center;
+  place-items: center;    /* centrowanie tekstu wewnątrz */
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 12px;
   margin-bottom: 12px;
-  overflow: hidden;
+  overflow: hidden;       /* ukrywa wystające elementy */
 }
 
-/* Proporcje */
+/* Proporcje obrazka (bez JS) */
 .ratio-16x9 { aspect-ratio: 16 / 9; }
 .ratio-4x3  { aspect-ratio: 4 / 3; }
 .ratio-1x1  { aspect-ratio: 1 / 1; }
 
-/* Tekst na placeholderze */
+/* Styl tekstu na placeholderze */
 .img-placeholder span {
   background: rgba(0,0,0,0.35);
   padding: 6px 10px;
@@ -132,7 +156,9 @@ h2 {
   border: 1px solid #243a31;
 }
 
-/* Albumy – lista z miniaturą */
+/* =========================
+   Albumy – układ listy
+   ========================= */
 .albums {
   list-style: none;
   padding: 0;
@@ -140,47 +166,49 @@ h2 {
   display: grid;
   gap: 14px;
 }
+
 .albums li {
   display: grid;
-  grid-template-columns: 88px 1fr;
+  grid-template-columns: 88px 1fr; /* miniatura + opis */
   gap: 12px;
   align-items: center;
 }
+
 .albums h3 { margin: 0 0 4px; font-size: 18px; }
 
-/* Członkowie */
+/* =========================
+   Członkowie zespołu
+   ========================= */
 .member h3 { margin: 6px 0 6px; font-size: 16px; }
 
+
 /* =========================
-   Dropdown menu — Osoby (fix)
+   Dropdown menu — Osoby
    ========================= */
 .site-nav li.dropdown {
-  position: relative;
+  position: relative; /* potrzebne dla absolutnego submenu */
 }
 
-/* Domyślnie ukryte */
+/* Domyślnie ukryte submenu */
 .site-nav li.dropdown .dropdown-menu {
-  display: none !important;      /* siła nadpisania, gdyby coś je pokazywało */
+  display: none !important;   /* Ukrycie na start */
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 4px);      /* poniżej głównego linku */
   left: 0;
   min-width: 180px;
   background: #0f1412;
   border: 1px solid #0f2a20;
   border-radius: 6px;
-  list-style: none;
   margin: 0;
   padding: 6px 0;
-  z-index: 99;
-
-  /* płynniejsze wrażenie, bez „mrugnięć” */
+  list-style: none;
   opacity: 0;
-  transform: translateY(4px);
+  transform: translateY(4px); /* animacja wysuwania */
   transition: opacity 120ms ease, transform 120ms ease;
-  pointer-events: none;          /* żeby nie łapało kursora, gdy ukryte */
+  pointer-events: none;       /* brak interakcji gdy niewidoczne */
 }
 
-/* Pokaż na hover oraz gdy fokus jest w środku (klawiatura / tap na mobile) */
+/* Pokazywanie przez :hover lub klawiaturę/fokus */
 .site-nav li.dropdown:hover .dropdown-menu,
 .site-nav li.dropdown:focus-within .dropdown-menu {
   display: block !important;
@@ -189,34 +217,15 @@ h2 {
   pointer-events: auto;
 }
 
-/* Pozycje w menu */
-.site-nav li.dropdown .dropdown-menu li { width: 100%; }
 .site-nav li.dropdown .dropdown-menu a {
   display: block;
   padding: 8px 12px;
-  text-decoration: none;
   color: var(--toxic-green);
-  border-radius: 0;
 }
 
-/* Hover na elementach submenu */
-.site-nav li.dropdown .dropdown-menu a:hover {
-  background: rgba(0, 168, 107, 0.15);
-}
-
-/* Nie zmieniaj tła „Osoby” przy najechaniu */
-.site-nav li.dropdown > a:hover {
-  background: none !important;
-}
-
-/* Zapobieganie miganiu: utrzymuj aktywny stan, gdy kursor schodzi na submenu */
-.site-nav li.dropdown:hover > a,
-.site-nav li.dropdown:focus-within > a {
-  outline: none;
-}
-
-
-/* Przycisk */
+/* =========================
+   Przycisk (np. Do góry)
+   ========================= */
 .btn {
   display: inline-block;
   background: var(--toxic-green);
@@ -225,14 +234,16 @@ h2 {
   border-radius: 6px;
   text-decoration: none;
   border: 1px solid #007a58;
-  transition: transform 0.05s ease-in-out, opacity 0.2s;
+  transition: transform 0.05s, opacity 0.2s;
 }
 .btn:hover { opacity: 0.9; }
 .btn:active { transform: translateY(1px); }
 
 .back-top { text-align: center; margin: 24px 0; }
 
-/* Stopka */
+/* =========================
+   Stopka
+   ========================= */
 .site-footer {
   border-top: 1px solid #0f2a20;
   padding: 24px 0 40px;
@@ -241,14 +252,18 @@ h2 {
   background: #0b0f0d;
 }
 
-/* Responsywność */
+/* =========================
+   Responsywność dla telefonów
+   ========================= */
 @media (max-width: 480px) {
   .site-header h1 { font-size: 24px; }
   h2 { font-size: 20px; }
   .albums li { grid-template-columns: 72px 1fr; }
 }
 
-/* Foto w sekcji „Osoby” – czysto, bez placeholdera */
+/* =========================
+   Styl zdjęć osób — bez placeholderów
+   ========================= */
 .member .photo {
   position: relative;
   border-radius: 8px;
@@ -258,18 +273,11 @@ h2 {
   margin-bottom: 12px;
 }
 
-/* Proporcje kontenera */
-.member .photo.ratio-1x1  { aspect-ratio: 1 / 1; }
-.member .photo.ratio-4x3  { aspect-ratio: 4 / 3; }
-.member .photo.ratio-16x9 { aspect-ratio: 16 / 9; }
-
-/* Obraz wypełnia kontener elegancko */
 .member .photo > img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* przycina ładnie, bez rozciągania */
-  display: block;
+  object-fit: cover; /* przycięty, wypełnia elegancko */
 }
 
-/* Na wszelki wypadek wyłącz stare placeholdery w #osoby */
+/* Ukrywa stare placeholdery w sekcji Osoby */
 #osoby .img-placeholder { display: none !important; }
